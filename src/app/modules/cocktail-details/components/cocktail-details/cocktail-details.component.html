@@ -1,0 +1,27 @@
+<div *ngIf="displayDetails">
+  <div class="form-group row">
+    <label for="filterOption" class="col-sm-4 control-label"> Filter drinks by Alcoholic/Non-Alcoholic category </label>
+    <div class="col-sm-8">
+      <select id="filterOption" [(ngModel)]="selectedOption" (change)="onSelectOption()">
+        <option value=""></option>
+        <option *ngFor="let filterOption of filterOptions" [value]="filterOption">
+          {{filterOption}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <ng-container *ngIf="filteredCocktailDetails.length > 0; else noDrinksBlock">
+      <div *ngFor="let cocktail of filteredCocktailDetails" class="card m-2" style="width: 18rem;"
+        (click)="openCocktailCard(cocktail)">
+        <img class="card-img-top" [src]="cocktail.strDrinkThumb">
+        <div class="card-body">
+          <h5 class="card-title">{{cocktail.strDrink}} - {{cocktail.strCategory}}</h5>
+          <p class="card-text">{{cocktail.strAlcoholic}}</p>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noDrinksBlock>
+      <span class="m-2">No Drinks to display for the selected filter option.</span>
+    </ng-template>
+  </div>
+</div>

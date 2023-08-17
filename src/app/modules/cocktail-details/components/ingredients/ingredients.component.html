@@ -1,0 +1,14 @@
+<ng-container *ngIf="selectedCocktail">
+    <h3>{{selectedCocktail.strDrink}} - {{selectedCocktail.strCategory}}</h3>
+    <div class="row">
+        <img class="card-img-top col-6" [src]="selectedCocktail.strDrinkThumb">
+        <div class="col-6">
+            <h6 class="text-decoration-underline">Ingredients</h6>
+            <p *ngFor="let ingredient of selectedCocktail?.strIngredients">
+                {{ingredient}}
+            </p>
+            <h6 class="text-decoration-underline mt-4">Instructions</h6>
+            <p class="card-text">{{selectedCocktail.strInstructions}}</p>
+        </div>
+    </div>
+</ng-container>

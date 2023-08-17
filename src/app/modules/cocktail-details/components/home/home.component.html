@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="card" style="width: 18rem;" *ngFor="let category of categoryList"
+    (click)="onClick(category)">
+    <div class="card-body">
+      <h5 class="card-title">{{category}}</h5>
+    </div>
+  </div>
+</div>
